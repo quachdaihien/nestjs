@@ -3,6 +3,7 @@ import {
   Get,
   Post,
   Body,
+  ValidationPipe,
   UseGuards,
   HttpException,
   HttpStatus,
@@ -15,6 +16,8 @@ import { Roles } from 'src/roles/roles.decorator';
 import { LoggingInterceptor } from 'src/interceptor/logging.interceptor';
 import { TransformInterceptor } from 'src/interceptor/transform.interceptor';
 import { User } from 'src/decorator/user.decorator';
+import { UserDto } from 'src/dto/user.dto';
+
 @Controller()
 @UseGuards(RolesGuardAdvanced)
 @UseInterceptors(TransformInterceptor)
