@@ -25,13 +25,13 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
   @Get('user/:id')
   @Roles(['admin'])
-  async getUserDetail(@User('name') name: string) {
-    console.log(name);
+  async getUserDetail(@User('name') user: UserDto) {
+    console.log('getDetail', user);
     return this.userService.getUserDetail();
   }
   @Post('user/:id')
   @Roles(['admin'])
-  async createNewUser(@Body() createUserDto: CreateUserDto) {
+  async createNewUser(@Body(new ValidationPipe()) UserDto: UserDto) {
     try {
       return this.userService.createNewUser();
     } catch (error) {
