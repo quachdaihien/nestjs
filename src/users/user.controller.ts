@@ -22,8 +22,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
   @Get('user/:id')
   @Roles(['admin'])
-  async getUserDetail(@User() user: String) {
-    console.log(user);
+  async getUserDetail(@User('name') name: string) {
+    console.log(name);
     return this.userService.getUserDetail();
   }
   @Post('user/:id')
