@@ -1,10 +1,17 @@
-import { Injectable } from "@nestjs/common/decorators";
+import { Injectable } from '@nestjs/common/decorators';
 @Injectable()
 export class UserService {
-    getUserDetail(): string {
-        return 'user detail'
-    }
-    createNewUser(): string {
-        return 'create new user'
-    }
+  getUserDetail(): Object {
+    return {
+      name: 'ad',
+      age: 12,
+      sex: 'femail',
+      dob: '12/1/12',
+      address: 'HD',
+    };
+  }
+  createNewUser(): string {
+    console.log('pass guard');
+    return 'create new user';
+  }
 }
