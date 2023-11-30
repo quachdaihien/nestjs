@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common/decorators';
 export class UserService {
   getUserDetail(): Object {
     return {
-      name: 'ad',
+      name: 'adsa21',
       age: 12,
       sex: 'femail',
       dob: '12/1/12',
