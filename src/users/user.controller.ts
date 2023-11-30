@@ -1,6 +1,7 @@
-import { Controller, Get, Post,Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, ValidationPipe } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './user.dto';
+import { UserDto } from 'src/dto/user.dto';
 
 @Controller()
 export class UserController {
@@ -10,7 +11,7 @@ export class UserController {
     return this.userService.getUserDetail();
   }
   @Post('user/:id')
-  createNewUser(@Body() createUserDto: CreateUserDto){
+  createNewUser(@Body() UserDto: UserDto) {
     return this.userService.createNewUser();
   }
 }
