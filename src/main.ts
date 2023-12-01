@@ -6,8 +6,8 @@ import { LoggingInterceptor } from './interceptor/logging.interceptor';
 import { ValidationPipe } from './validation.pipe';
 
 async function bootstrap() {
-  const app = await NestFactory.create(UserModule);
-  app.useGlobalPipes(new ValidationPipe());
+  const app = await NestFactory.create(AppModule);
+  // app.useGlobalPipes(new ValidationPipe());
   // add guard global
   // app.useGlobalGuards(new RolesGuard());
   // app.useGlobalInterceptors(new LoggingInterceptor());
