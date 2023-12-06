@@ -1,10 +1,10 @@
 version: '3.9'
 services:
-  mysql:
+  my-sql:
     image: mysql:8.0
     ports:
-      - '3000'
-    enviroment:
+      - "3309:3306"
+    environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: HI
       MYSQL_USER: OK
