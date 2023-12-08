@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common/decorators';
+import { LoggerService } from 'src/logger/logger.service';
 @Injectable()
 export class UserService {
+  constructor(private readonly logger: LoggerService) {}
   getUserDetail(): Object {
     return {
       name: 'adsa21',
@@ -13,5 +15,8 @@ export class UserService {
   createNewUser(): string {
     console.log('pass guard');
     return 'create new user';
+  }
+  getLogger() {
+    return this.logger
   }
 }
