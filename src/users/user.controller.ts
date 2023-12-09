@@ -17,12 +17,18 @@ import { LoggingInterceptor } from 'src/interceptor/logging.interceptor';
 import { TransformInterceptor } from 'src/interceptor/transform.interceptor';
 import { User } from 'src/decorator/user.decorator';
 import { UserDto } from 'src/dto/user.dto';
+import { LoggerService } from 'src/logger/logger.service';
 
 @Controller()
 @UseGuards(RolesGuardAdvanced)
 @UseInterceptors(TransformInterceptor)
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly logger: LoggerService,
+  ) {
+    console.log('ad',logger === userService.getLogger());
+  }
   @Get('user/:id')
   @Roles(['admin'])
   async getUserDetail(@User('name') user: UserDto) {
@@ -46,5 +52,17 @@ export class UserController {
         },
       );
     }
+  }
+
+  @Get('user/inject/:id')
+  @Roles(['admin'])
+  getLogger() {
+    return [this.logger.log(),this.userService.getLogger().log()];
+  }
+
+  @Post('user/inject/:id')
+  @Roles(['admin'])
+  postLogger() {
+    return this.logger.log();
   }
 }
